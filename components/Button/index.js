@@ -1,9 +1,9 @@
 import { colors } from "../../styles/theme";
 
-const Button = ({children, onclick}) => {
+const Button = ({children, onClick}) => {
   return (
     <>
-      <button onClick={onclick}>{children}</button>
+      <button onClick={onClick}>{children}</button>
       <style jsx>{`
         button{
           display:flex;

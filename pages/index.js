@@ -4,8 +4,17 @@ import AppLayout from "../components/AppLayout";
 import { colors } from "../styles/theme";
 import Button from "../components/button";
 import GitHub from "../components/icons/GitHub";
+import { loginWithGithub } from "../firebase/client";
+
+
 
 export default function Home() {
+
+  function handleClick(event) {
+    loginWithGithub().then(user=>{
+      console.log(user);
+    }).catch(error=>console.log(error))
+  }
   return (
     <div>
       <Head>
@@ -20,7 +29,7 @@ export default function Home() {
           <h1>Devter</h1>
           <h2>Talk about development with developers</h2>
           <div>
-            <Button>
+            <Button onClick={handleClick}>
               <GitHub fill={'#fff'} width={32} height={32}/>
               Login with GitHub
             </Button>
