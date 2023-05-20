@@ -1,8 +1,8 @@
-import css from "styled-jsx/css"
-import { breakpoints, colors, fonts } from "./theme.js";
-import { addOpacityToColor } from "./utils.js";
+import css from 'styled-jsx/css'
+import { breakpoints, colors, fonts } from './theme.js'
+import { addOpacityToColor } from './utils.js'
 
-const backgroundColor = addOpacityToColor(colors.primary, 0.3);
+const backgroundColor = addOpacityToColor(colors.primary, 0.3)
 
 export const globalStyles = css.global`
 html,
@@ -21,7 +21,7 @@ body {
 * {
   box-sizing: border-box;
 }
-`;
+`
 
 export default css`
 div{
@@ -43,4 +43,4 @@ main{
     width: ${breakpoints.mobile};
   }
 }
-`;
+`

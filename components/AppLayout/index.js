@@ -1,6 +1,6 @@
-import styles, {globalStyles} from '../../styles/styledComponent.js'
+import styles, { globalStyles } from '../../styles/styledComponent.js'
 
-export default function AppLayout({ children }) {
+export default function AppLayout ({ children }) {
   return (
     <>
       <div>
@@ -9,5 +9,5 @@ export default function AppLayout({ children }) {
       <style jsx>{styles}</style>
       <style jsx global>{globalStyles}</style>
     </>
-  );
+  )
 }

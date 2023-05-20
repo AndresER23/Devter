@@ -1,5 +1,5 @@
-import Link from "next/link";
-import AppLayout from "../../components/AppLayout";
+import Link from 'next/link'
+import AppLayout from '../../components/AppLayout'
 
 const Timeline = () => {
   return (
@@ -16,7 +16,7 @@ const Timeline = () => {
         `}
       </style>
     </>
-  );
-};
+  )
+}
 
-export default Timeline;
+export default Timeline
