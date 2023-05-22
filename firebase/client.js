@@ -19,17 +19,16 @@ export const loginWithGithub = async () => {
     })
 }
 const mapUserFromFirebaseAuthToUser = (user) => {
-  const { displayName, email, photoURL } = user
+  const { screenName, email, photoUrl } = user.reloadUserInfo
 
   return {
-    avatar: photoURL,
-    username: displayName,
+    avatar: photoUrl,
+    username: screenName,
     email
   }
 }
 export const sessionState = (onChange) => {
   return onAuthStateChanged(auth, (user) => {
-    console.log(user)
     const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null
     onChange(normalizedUser)
   })

@@ -35,6 +35,7 @@ main{
   box-shadow: 0 10px 25px rgba(0,0,0, .1);
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 @media (min-width:${breakpoints.mobile}){

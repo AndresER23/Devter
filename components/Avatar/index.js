@@ -3,9 +3,9 @@ import styles from './styles.module.css'
 const Avatar = ({ src, alt, text, withText }) => {
   return (
     <>
-    <div>
+    <div className={styles.container}>
       <Image className={styles.avatar} src={src} alt={alt} width={49} height={49}/>
-      {withText && <strong>{alt || text}</strong>}
+      {text && <strong>{text}</strong>}
     </div>
     </>
   )

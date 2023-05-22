@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import AppLayout from '../components/AppLayout'
+import AppLayout from '@c/AppLayout'
 import { colors } from '../styles/theme'
-import Button from '../components/button'
-import GitHub from '../components/icons/GitHub'
+import Button from '@c/Button'
+import GitHub from '@c/icons/GitHub'
+import Logo from '@c/icons/Logo'
 import { loginWithGithub, sessionState } from '../firebase/client'
 import { useState, useEffect } from 'react'
-import Avatar from '../components/Avatar'
+import Avatar from '@c/Avatar'
 
 export default function Home () {
   const [user, setUser] = useState(undefined)
@@ -36,7 +36,7 @@ export default function Home () {
 
       <AppLayout>
         <section>
-          <Image src="/devter-logo.png" alt="Logo" width={120} height={110} />
+          <Logo width='100'/>
           <h1>Devter</h1>
           <h2>Talk about development with developers</h2>
           <div>
@@ -50,7 +50,7 @@ export default function Home () {
             {
               user && user.avatar && (
                 <div>
-                  <Avatar text='este es el texto' withText={1} src={user.avatar} alt={'loged-user'}></Avatar>
+                  <Avatar text={user.username} withText={1} src={user.avatar}></Avatar>
                 </div>
               )
             }
@@ -64,6 +64,7 @@ export default function Home () {
         }
         h1 {
           color: ${colors.primary};
+          font-size: 32px;
         }
         h2 {
           color: ${colors.secondary};
