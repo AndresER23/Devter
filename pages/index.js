@@ -4,28 +4,22 @@ import { colors } from '../styles/theme'
 import Button from '@c/Button'
 import GitHub from '@c/icons/GitHub'
 import Logo from '@c/icons/Logo'
-import { loginWithGithub, sessionState } from '../firebase/client'
-import { useState, useEffect } from 'react'
-import Avatar from '@c/Avatar'
+import Image from 'next/image'
+import useUser, { USER_STATES } from 'Hooks/useUser'
+import { loginWithGithub } from '../firebase/client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Home () {
-  const [user, setUser] = useState(undefined)
-
-  useEffect(() => {
-    sessionState(user => {
-      console.log(user)
-      setUser(user)
-    })
-  }, [])
+  const user = useUser()
+  const router = useRouter()
 
   function handleClick (event) {
-    loginWithGithub()
-      .then((user) => {
-        const { avatar, username, email } = user
-        setUser({ avatar, username, email })
-      })
-      .catch((error) => console.log(error))
+    loginWithGithub().catch((error) => console.log(error))
   }
+  useEffect(() => {
+    user && router.replace('/home')
+  }, [user])
   return (
     <div>
       <Head>
@@ -40,7 +34,7 @@ export default function Home () {
           <h1>Devter</h1>
           <h2>Talk about development with developers</h2>
           <div>
-            {user === null && (
+            {user === USER_STATES.NOT_LOGGED && (
               <Button onClick={handleClick}>
                 <GitHub fill={'#fff'} width={32} height={32} />
                 Login with GitHub
@@ -48,11 +42,7 @@ export default function Home () {
 
             )}
             {
-              user && user.avatar && (
-                <div>
-                  <Avatar text={user.username} withText={1} src={user.avatar}></Avatar>
-                </div>
-              )
+              user === USER_STATES.NOT_KNOWN && <Image src={'/spinner.gif'} width={30} height={30}/>
             }
           </div>
         </section>

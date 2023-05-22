@@ -17,9 +17,15 @@ body {
   background-size: 50px 50px;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 * {
   box-sizing: border-box;
+}
+
+textarea, 
+input {
+  font-family: ${fonts.base}
 }
 `
 
@@ -36,6 +42,7 @@ main{
   height: 100%;
   width: 100%;
   position: relative;
+  overflow-y: auto;
 }
 
 @media (min-width:${breakpoints.mobile}){
