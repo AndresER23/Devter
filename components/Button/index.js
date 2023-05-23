@@ -1,9 +1,9 @@
 import { colors } from '../../styles/theme'
 
-const Button = ({ children, onClick }) => {
+const Button = ({ disabled, children, onClick }) => {
   return (
     <>
-      <button onClick={onClick}>{children}</button>
+      <button disabled={disabled} onClick={onClick}>{children}</button>
       <style jsx>{`
         button{
           display:flex;
@@ -17,11 +17,16 @@ const Button = ({ children, onClick }) => {
           font-weight:400;
           padding: 8px 24px;
           transition: opacity .3s ease;
+          user-select: none;
+        }
+        button[disabled]{
+          pointer-events: none;
+          opacity: .2;
         }
         
         button>:global(svg){
           margin-right: 8px;
-        }
+        }}
 
         button:hover{
           opacity: .7;

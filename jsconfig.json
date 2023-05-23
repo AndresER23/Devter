@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@c/*" : ["components/*"],
-      "@p/*" : ["pages/*"]
+      "@p/*" : ["pages/*"],
+      "@f/*" : ["fbase/*"]
     }
   }
 }

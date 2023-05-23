@@ -6,7 +6,7 @@ import GitHub from '@c/icons/GitHub'
 import Logo from '@c/icons/Logo'
 import Image from 'next/image'
 import useUser, { USER_STATES } from 'Hooks/useUser'
-import { loginWithGithub } from '../firebase/client'
+import { loginWithGithub } from '../fbase/client'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 

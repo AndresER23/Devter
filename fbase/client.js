@@ -3,7 +3,8 @@ import {
   onAuthStateChanged,
   signInWithPopup
 } from 'firebase/auth'
-import { auth } from './firebaseApp'
+import { auth, db } from './firebaseApp'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 
 export const loginWithGithub = async () => {
   const gitHubProvider = new GithubAuthProvider()
@@ -19,12 +20,14 @@ export const loginWithGithub = async () => {
     })
 }
 const mapUserFromFirebaseAuthToUser = (user) => {
+  console.log(user)
   const { screenName, email, photoUrl } = user.reloadUserInfo
-
+  const { uid } = user
   return {
     avatar: photoUrl,
     username: screenName,
-    email
+    email,
+    uid
   }
 }
 export const sessionState = (onChange) => {
@@ -32,4 +35,19 @@ export const sessionState = (onChange) => {
     const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null
     onChange(normalizedUser)
   })
+}
+export const addDevit = ({ userName, userId, avatar, content }) => {
+  try {
+    return addDoc(collection(db, 'devits'), {
+      userId,
+      userName,
+      avatar,
+      content,
+      createdAt: Timestamp.fromDate(new Date()),
+      likesCount: 0,
+      sharesCount: 0
+    })
+  } catch (e) {
+    console.error('Error adding document: ', e)
+  }
 }

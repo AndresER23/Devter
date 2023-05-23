@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { sessionState } from '../firebase/client'
+import { sessionState } from '../fbase/client'
 import { useRouter } from 'next/router'
 
 export const USER_STATES = {
